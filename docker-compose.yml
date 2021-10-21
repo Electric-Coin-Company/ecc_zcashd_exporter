@@ -21,11 +21,6 @@ services:
     build: .
     env_file:
       - .env
-#    command:
-#      - --rpc.host=zcashd
-#      - --rpc.port=$ZCASHD_RPCPORT
-#      - --rpc.user=$ZCASHD_RPCUSER
-#      - --rpc.password=$ZCASHD_RPCPASSWORD
     ports:
       - "9100:9100"
     logging:
@@ -34,7 +29,7 @@ services:
         loki-url: 'http://localhost:3100/api/prom/push'
 
   grafana:
-    image: grafana/grafana:6.4.3
+    image: grafana/grafana:8.2.2
     entrypoint:
       - bash
       - -c
@@ -51,7 +46,7 @@ services:
         loki-url: 'http://localhost:3100/api/prom/push'
 
   prometheus:
-    image: prom/prometheus:v2.13.1
+    image: prom/prometheus:v2.30.3
     ports:
       - "9090:9090"
     volumes:

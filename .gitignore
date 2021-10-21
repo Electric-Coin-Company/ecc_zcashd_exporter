@@ -1,3 +1,8 @@
+# Local files for config of test, development, and production environment
+.env
+.env.local
+.env.prod
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

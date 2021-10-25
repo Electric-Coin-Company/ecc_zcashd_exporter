@@ -21,11 +21,6 @@ services:
     build: .
     env_file:
       - .env
-#    command:
-#      - --rpc.host=zcashd
-#      - --rpc.port=$ZCASHD_RPCPORT
-#      - --rpc.user=$ZCASHD_RPCUSER
-#      - --rpc.password=$ZCASHD_RPCPASSWORD
     ports:
       - "9100:9100"
     logging:
@@ -34,11 +29,7 @@ services:
         loki-url: 'http://localhost:3100/api/prom/push'
 
   grafana:
-    image: grafana/grafana:6.4.3
-    entrypoint:
-      - bash
-      - -c
-      - grafana-cli plugins install grafana-piechart-panel && /run.sh
+    image: grafana/grafana:8.2.2
     ports:
       - "3000:3000"
     env_file:
@@ -51,7 +42,7 @@ services:
         loki-url: 'http://localhost:3100/api/prom/push'
 
   prometheus:
-    image: prom/prometheus:v2.13.1
+    image: prom/prometheus:v2.30.3
     ports:
       - "9090:9090"
     volumes:
@@ -63,7 +54,7 @@ services:
         loki-url: 'http://localhost:3100/api/prom/push'
 
   loki:
-    image: grafana/loki:master
+    image: grafana/loki:main-517ba7c
     ports:
       - '3100:3100'
     command: -config.file=/etc/loki/local-config.yaml

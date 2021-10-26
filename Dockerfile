@@ -1,11 +1,10 @@
 #Image layers are not split because of pycurl C dependency issues 
-FROM alpine:3
+FROM alpine:3 as base
 WORKDIR /app
-RUN apk add -u --no-cache build-base python3-dev \
-    && apk add -u --no-cache --virtual .build-deps curl-dev py3-wheel py3-pip
-ADD requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apk add -u --no-cache gcc g++ python3-dev \
+            curl-dev py3-wheel py3-pip
 ADD . .
+RUN pip install --no-cache-dir -r requirements.txt
 RUN chmod +x ecc_zcashd_exporter.py
 CMD [ "/app/ecc_zcashd_exporter.py" ]
 

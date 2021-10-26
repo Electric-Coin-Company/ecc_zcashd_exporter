@@ -30,10 +30,6 @@ services:
 
   grafana:
     image: grafana/grafana:8.2.2
-    entrypoint:
-      - bash
-      - -c
-      - grafana-cli plugins install grafana-piechart-panel && /run.sh
     ports:
       - "3000:3000"
     env_file:
@@ -58,7 +54,7 @@ services:
         loki-url: 'http://localhost:3100/api/prom/push'
 
   loki:
-    image: grafana/loki:master
+    image: grafana/loki:main-517ba7c
     ports:
       - '3100:3100'
     command: -config.file=/etc/loki/local-config.yaml

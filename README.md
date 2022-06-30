@@ -1,28 +1,31 @@
 # Quick Setup
-This setup assumes Docker is installed on your system. 
-Please see https://docs.docker.com/engine/install/ to install.
+This setup assumes docker and docker-compose is installed on your system. 
+Please see: 
+https://docs.docker.com/engine/install/ to install docker
+https://docs.docker.com/compose/install/ to install docker-compose
 
-Also recommended: Install ctop - https://github.com/bcicen/ctop
+Also recommended: 
+Install ctop - https://github.com/bcicen/ctop
 
 ### Creating zcashd directories?
 Decide where you want to store (or refence existing ) zcashd data.
 
 For example, create 2 new directories:
-'''
+```
 sudo mkdir -p /srv/zcashd/.zcash
 sudo mkdir -p /srv/zcashd/.zcash-params
-'''
+```
 
 Make uid 2001 owner of the directories. This is the uid of user zcashd runs as.
-'''
+```
 sudo chown -R 2001 /srv/zcashd/.zcash
 sudo chown -R 2001 /srv/zcashd/.zcash-params
-'''
+```
 
 ### Installing Loki Docker log driver
-'''
+```
 docker plugin install  grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
-'''
+```
 ### Update HTTP Timeout for graceful stops
 ```
 export COMPOSE_HTTP_TIMEOUT=500
@@ -74,7 +77,7 @@ docker run -it --rm ecc_z_exporter:latest
 
 To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
 
-## Local Docker Registry Setup
+#### Local Docker Registry Setup
 See https://docs.docker.com/registry/deploying/
 
 1. Run local registry

@@ -1,7 +1,7 @@
 # Local files for config of test, development, and production environment
-.env
-.env.local
-.env.prod
+#.env
+#.env.local
+#.env.prod
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -107,13 +107,13 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+#.env
+#.venv
+#env/
+#venv/
+#ENV/
+#env.bak/
+#venv.bak/
 
 # Spyder project settings
 .spyderproject

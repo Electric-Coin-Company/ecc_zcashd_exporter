@@ -1,5 +1,6 @@
 #Image layers are not split because of pycurl C dependency issues 
 FROM alpine:3 as base
+ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 RUN apk add -u --no-cache gcc g++ python3-dev \
             curl-dev py3-wheel py3-pip
